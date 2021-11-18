@@ -1,3 +1,9 @@
+
+//localStorage.setItem("tabella","");
+// console.log("nome: " , localStorage.getItem("nome"))
+$("#tab").append(JSON.parse(localStorage.getItem("tabella")));
+//localStorage.clear();
+var tableArray = [];
 $("#btn1").click(function (){
   calculation("+")}
 );
@@ -33,15 +39,22 @@ var calculation = function (segno) {
         break;
     }
     var string =
-      "<tr><td>" +
-      n1 +
-      "</td><td style='text-align:center'>" +
-      segno +
-      "</td><td>" +
-      n2 +
-      "</td><td>" +
-      risultato +
-      "</td></tr>";
+        "<tr><td>" +
+        n1 +
+        "</td><td style='text-align:center'>" +
+        segno +
+        "</td><td>" +
+        n2 +
+        "</td><td>" +
+        risultato +
+        "</td></tr>";
+        tableArray.push(string);
+        console.log(tableArray);
+
+        //var table = localStorage.getItem("tabella");
+        // localStorage.setItem("tabella", table + string);
+        //var jsonArr = {"arr" : tableArray};
+        localStorage.setItem("tabella", JSON.parse(tableArray));
     $("#tab").append(string);
     input1.val("");
     input2.val("");
